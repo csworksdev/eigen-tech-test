@@ -1,5 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import First from "./algorithms/first";
+import Second from "./algorithms/second";
+import Third from "./algorithms/third";
+import Fourth from "./algorithms/fourth";
 
 function App() {
   return (
@@ -18,6 +22,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <First />
+      <Second />
+      <Third />
+      <Fourth />
     </div>
   );
 }
