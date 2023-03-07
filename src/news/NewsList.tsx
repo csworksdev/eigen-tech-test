@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Card, List } from 'antd';
 
 type News = {
   title: string;
@@ -29,25 +30,33 @@ function NewsList() {
   }
 
   return (
-    <div>
+    <div style={{margin: "48px"}}>
       {selectedNews ? (
         // If a news article is selected, show its details
-        <div>
+        <div >
           <h2>{selectedNews.title}</h2>
           <p>{selectedNews.description}</p>
           <a href={selectedNews.url} target="_blank" rel="noopener noreferrer">Read more</a>
           <button onClick={() => setSelectedNews(null)}>Back to news list</button>
         </div>
       ) : (
-        // If no news article is selected, show the list of news
-        <ul>
-          {news.map(news => (
-            <li key={news.title} onClick={() => handleNewsClick(news)}>
-              <h2>{news.title}</h2>
-              <p>{news.description}</p>
-            </li>
-          ))}
-        </ul>
+        <List
+          grid={{
+            gutter: 16,
+            xs: 1,
+            sm: 2,
+            md: 4,
+            lg: 4,
+            xl: 6,
+            xxl: 3,
+          }}
+          dataSource={news}
+          renderItem={(item) => (
+            <List.Item onClick={() => handleNewsClick(item)}>
+              <Card title={item.title}>{item.description}</Card>
+            </List.Item>
+          )}
+        />
       )}
     </div>
   );
